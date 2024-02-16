@@ -1,26 +1,60 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="page-wrapper">
+    <div class="page">
+      <div class="message-history">{{ messageHistory }}</div>
+      <div class="message-block">
+        <input
+          type="text"
+          class="message-block__message input"
+          v-model="message"
+        />
+        <img
+          src="@/icons/send-message-icon.png"
+          alt=""
+          class="message-block__send-message-button"
+          @click="sendMessage"
+        />
+      </div>
+      <button class="">+</button>
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      messageHistory:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse unde blanditiis, atque laboriosam minima distinctio omnis neque architecto exercitationem nisi repudiandae nulla vitae dolore quasi facere modi libero pariatur velit!",
+      message: "",
+    };
+  },
+  methods: {
+    sendMessage() {
+      if (this.message !== "") {
+        console.log(this.message);
+      }
+      this.message = "";
+    },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.page {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.message-block {
+  display: flex;
+}
+.message-block__send-message-button {
+  width: 35px;
+}
+.input {
+  border: 1px solid black;
+  width: 40%;
 }
 </style>
